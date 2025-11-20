@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Users from "./Users";
 
 const App = () => {
 
@@ -21,6 +22,21 @@ const App = () => {
             >
               کاربران
             </button>
+            <button
+            onClick={() => setPage("posts")}
+            className={`px-6 py-3 rounded font-medium transition-all duration-200
+              ${page === "posts"
+                ? "bg-emerald-700 text-white shadow-md"
+                : "bg-gray-500 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              پست ها
+            </button>
+          </div>
+
+          <div className="bg-gray-200 rounded p-4">
+            {page === "users" && <Users/>}
+            {page === "posts" && <Posts/>}
           </div>
         </div>
       </div>
