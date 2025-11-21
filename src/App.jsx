@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Users from "./Users";
+import Posts from "./Posts";
 
 const App = () => {
 

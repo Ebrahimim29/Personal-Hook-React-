@@ -1,27 +1,30 @@
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
+import { useGetData } from "./fetchData"
 
 const Users = () => {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const {data, loading, error} = useGetData("https://jsonplaceholder.typicode.com/users");
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            setLoading(true);
-            try {
-                const res = await fetch("https://jsonplaceholder.typicode.com/users");
-                if(!res.ok) throw new Error("خطا در دریافت اطلاعات");
-                const data = await res.json();
-                setData(data);
-                setLoading(false);
-            } catch (err) {
-                setError(err.message);
-                setLoading(false);
-            }
-        };
+    // const [data, setData] = useState(null);
+    // const [loading, setLoading] = useState(true);
+    // const [error, setError] = useState(null);
 
-        fetchUsers();
-    }, []);
+    // useEffect(() => {
+    //     const fetchUsers = async () => {
+    //         setLoading(true);
+    //         try {
+    //             const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    //             if(!res.ok) throw new Error("خطا در دریافت اطلاعات");
+    //             const data = await res.json();
+    //             setData(data);
+    //             setLoading(false);
+    //         } catch (err) {
+    //             setError(err.message);
+    //             setLoading(false);
+    //         }
+    //     };
+
+    //     fetchUsers();
+    // }, []);
 
     if (loading) return <div className="flex justify-center items-center min-h-[200px]">
         <span className="text-blue-400 text-lg font-medium">در حال دریافت اطلاعات ....</span>
@@ -58,5 +61,5 @@ const Users = () => {
         </div>
     );
 }
-// part-346 4:00
+
 export default Users;
