@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import Users from "./Users";
 import Posts from "./Posts";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { Link, NavLink, Route, Routes } from "react-router";
 
 const App = () => {
 
@@ -14,38 +14,42 @@ const App = () => {
           <h1 className="text-3xl font-bold text-center text-emerald-500 mb-6">React App</h1>
 
           <div className="flex justify-center mb-8 gap-4">
-            <button
-            // onClick={() => setPage("users")}
-            className={`px-6 py-3 rounded font-medium transition-all duration-200`}
-              // ${page === "users" 
-              //   ? "bg-amber-500 text-white shadow-md"
-              //   : "bg-gray-500 text-gray-700 hover:bg-gray-200"
-              // }`}
+            <NavLink
+            to="/users"
+            className={({isActive}) => `p-2 rounded ${isActive 
+            ? "bg-linear-to-r from-blue-300 to-red-400 text-gray"
+            : "bg-linear-to-l from-pink-300 to-yellow-400 text-gray-700 hover:bg-gray-200"
+            }`}
             >
-              کاربران
-            </button>
-            <button
-            // onClick={() => setPage("posts")}
-            className={`px-6 py-3 rounded font-medium transition-all duration-200`}
-              // ${page === "posts"
-              //   ? "bg-emerald-700 text-white shadow-md"
-              //   : "bg-gray-500 text-gray-700 hover:bg-gray-200"
-              // }`}
+            کاربران
+            </NavLink>
+            <NavLink
+            to="/posts"
+            style={({isActive}) => ({
+              backgroundColor: isActive ? "bg-indigo-600" : "bg-gray-100",
+              color: isActive ? "white" : "gray-700",
+              padding: "0.5rem 1rem",
+              borderRadius: "0.25rem"
+            })}
+            className={({isActive}) => `p-2 rounded ${isActive
+              ? "bg-red text-white"
+              : "bg-red-300 text-gray-700 hover:bg-gray-500"
+            }`}
             >
               پست ها
-            </button>
+            </NavLink>
           </div>
 
           <div className="bg-gray-200 rounded p-4">
             {/* {page === "users" && <Users/>}
             {page === "posts" && <Posts/>} */}
 
-            <BrowserRouter>
+            {/* <BrowserRouter> */}
               <Routes>
                 <Route path="/users" element={<Users/>}></Route>
                 <Route path="/posts" element={<Posts/>}></Route>
               </Routes>
-            </BrowserRouter>
+            {/* </BrowserRouter> */}
           </div>
         </div>
       </div>
