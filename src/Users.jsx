@@ -46,7 +46,7 @@ const Users = () => {
             <ul className="bg-white rounded-xl shadow-md divide-y divide-amber-300">
                 {data.map((user) => (
                     <li key={user.id} className="p-4 hover:bg-blue-200 transition-colors duration-200">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between">
+                        <Link to={`/users/user-details/${user.id}`} className="flex flex-col sm:flex-row sm:items-center justify-between">
                             <div className="flex items-center space-x-3 space-x-reverse">
                                 <div className="w-10 h-10 rounded-full bg-linear-to-r from-red-300 to-emerald-500 flex items-center justify-center
                             text-white font-bold">
@@ -62,7 +62,7 @@ const Users = () => {
                                     {user.email}
                                 </a>
                             </div>
-                        </div>
+                        </Link>
                     </li>
                 ))}
             </ul>

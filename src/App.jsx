@@ -3,6 +3,7 @@ import Users from "./Users";
 import Posts from "./Posts";
 import { Link, NavLink, Route, Routes } from "react-router";
 import AddUser from "./AddUser";
+import UserDetails from "./UserDetails";
 
 const App = () => {
 
@@ -51,6 +52,8 @@ const App = () => {
             <Routes>
               <Route path="/users" element={<Users />}>
                 <Route path="add-user" element={<AddUser/>}></Route>
+                <Route path="user-details/:userId" element={<UserDetails/>}></Route>
+                {/* <Route path=":userId" element={<UserDetails/>}></Route> */}
               </Route>
               <Route path="/posts" element={<Posts />}></Route>
             </Routes>
