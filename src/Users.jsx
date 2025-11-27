@@ -5,6 +5,8 @@ import { useGetData } from "./fetchData"
 const Users = () => {
     const { data, loading, error } = useGetData("https://jsonplaceholder.typicode.com/users");
 
+    console.log(data);
+    
     // const [data, setData] = useState(null);
     // const [loading, setLoading] = useState(true);
     // const [error, setError] = useState(null);
@@ -46,7 +48,7 @@ const Users = () => {
             <ul className="bg-white rounded-xl shadow-md divide-y divide-amber-300">
                 {data.map((user) => (
                     <li key={user.id} className="p-4 hover:bg-blue-200 transition-colors duration-200">
-                        <Link to={`user-details/${user.id}`} className="flex flex-col sm:flex-row sm:items-center justify-between">
+                        <Link to={`user-details/${user.id}`} state={user} className="flex flex-col sm:flex-row sm:items-center justify-between">
                             <div className="flex items-center space-x-3 space-x-reverse">
                                 <div className="w-10 h-10 rounded-full bg-linear-to-r from-red-300 to-emerald-500 flex items-center justify-center
                             text-white font-bold">

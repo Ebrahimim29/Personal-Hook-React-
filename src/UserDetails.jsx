@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useLocation, useParams } from "react-router";
 
 const UserDetails = () => {
     // const params = useParams()
@@ -9,6 +9,13 @@ const UserDetails = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const location = useLocation();
+    
+    const {user : selectedUser} = location.state
+    console.log(selectedUser);
+    
+    
 
     useEffect(() => {
         setLoading(true);
@@ -118,7 +125,6 @@ const UserDetails = () => {
                 </div>
             </div>
         </div>
-
     )
 };
 
