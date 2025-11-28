@@ -1,11 +1,11 @@
 // import { useEffect, useState } from "react"
-import { Link, Outlet } from "react-router";
+import { Link, Outlet } from "react-router-dom";
 import { useGetData } from "./fetchData"
 
 const Users = () => {
     const { data, loading, error } = useGetData("https://jsonplaceholder.typicode.com/users");
 
-    console.log(data);
+    // console.log(data);
     
     // const [data, setData] = useState(null);
     // const [loading, setLoading] = useState(true);
@@ -35,22 +35,24 @@ const Users = () => {
 
     if (error) return <div className="bg-red-400 text-red-300 p-4 rounded-lg text-center">{error} خطا :</div>
 
+    if (!data) return null;
+
     return (
         <div className="max-w-3xl mx-auto p-6">
             <Link
                 to="/users/add-user"
-                className={`text-center align-center p-2 rounded bg-amber-500 text-white`}
+                className={`text-center p-2 rounded bg-amber-500 text-white`}
             >
                 افزودن کاربر
             </Link>
             <Outlet/>
             <h2 className="text-2xl font-bold text-gray-600 mb-6 text-center">لیست کاربران</h2>
             <ul className="bg-white rounded-xl shadow-md divide-y divide-amber-300">
-                {data.map((user) => (
+                {data && data.map((user) => (
                     <li key={user.id} className="p-4 hover:bg-blue-200 transition-colors duration-200">
                         <Link to={`user-details/${user.id}`} state={user} className="flex flex-col sm:flex-row sm:items-center justify-between">
                             <div className="flex items-center space-x-3 space-x-reverse">
-                                <div className="w-10 h-10 rounded-full bg-linear-to-r from-red-300 to-emerald-500 flex items-center justify-center
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-red-300 to-emerald-500 flex items-center justify-center
                             text-white font-bold">
                                     {user.name.charAt(0)}
                                 </div>

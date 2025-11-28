@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 const UserDetails = () => {
     // const params = useParams()
@@ -12,7 +12,7 @@ const UserDetails = () => {
 
     const location = useLocation();
     
-    const {user : selectedUser} = location.state
+    const {user : selectedUser} = location.state || {};
     console.log(selectedUser);
     
     
@@ -35,7 +35,7 @@ const UserDetails = () => {
     }, [userId]);
 
     if (loading) return (
-        <div className="flex justify-center items-center min-h-[300px">
+        <div className="flex justify-center items-center min-h-[300px]">
             <span className="text-blue-600 text-lg font-medium">
                 در حال دریافت اطلاعات کاربر...
             </span>
@@ -43,7 +43,7 @@ const UserDetails = () => {
     );
 
     if (error) return (
-        <div className="bg-red-500 text-shadow-emerald-400 p-4 rounded-lg text-center">
+        <div className="bg-red-500 text-white p-4 rounded-lg text-center">
             {error}  خطا : 
             <Link to="/users" className="block mt-4 text-blue-600 hover:underline">
                 بازگشت به لیست کاربران
@@ -65,7 +65,7 @@ const UserDetails = () => {
         <div className="fixed w-full h-screen left-0 top-0 z-20 bg-black/50 flex justify-center items-center">
             <div className="bg-amber-400 rounded-lg shadow-md p-6 max-w-md mx-auto mb-4">
                 <div className="flex items-center mb-6">
-                    <div className="w-20 h-20 bg-linear-to-r from-emerald-600 to-pink-500 rounded-full flex items-center
+                    <div className="w-20 h-20 bg-gradient-to-r from-emerald-600 to-pink-500 rounded-full flex items-center
                 justify-center overflow-hidden mr-4">
                         <span className="text-white text-3xl font-bold">{initials}</span>
                     </div>

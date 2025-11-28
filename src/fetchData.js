@@ -12,7 +12,8 @@ export const useGetData = (url) => {
                 const res = await fetch(url);
                 if(!res.ok) throw new Error("خطا در دریافت اطلاعات");
                 const data = await res.json();
-                setData(data.slice(0,12)); //12 first posts
+                // برای posts فقط 12 مورد اول را نمایش می‌دهیم
+                setData(url.includes('posts') ? data.slice(0,12) : data);
                 setLoading(false);
             }catch (err) {
                 setError(err.message);
