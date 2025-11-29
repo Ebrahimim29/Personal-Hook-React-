@@ -52,7 +52,7 @@ const Users = () => {
                     <li key={user.id} className="p-4 hover:bg-blue-200 transition-colors duration-200">
                         <Link to={`user-details/${user.id}`} state={user} className="flex flex-col sm:flex-row sm:items-center justify-between">
                             <div className="flex items-center space-x-3 space-x-reverse">
-                                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-red-300 to-emerald-500 flex items-center justify-center
+                                <div className="w-10 h-10 rounded-full bg-linear-to-r from-red-300 to-emerald-500 flex items-center justify-center
                             text-white font-bold">
                                     {user.name.charAt(0)}
                                 </div>

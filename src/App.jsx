@@ -4,6 +4,7 @@ import Posts from "./Posts";
 import { Link, Navigate, NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import AddUser from "./AddUser";
 import UserDetails from "./UserDetails";
+import NotFound from "./NotFound";
 
 const App = () => {
   // const [page , setPage] = useState("users");
@@ -73,6 +74,7 @@ const App = () => {
               {/* <Route path=":userId" element={<UserDetails/>}></Route> */}
             </Route>
             <Route path="/posts" element={<Posts />}></Route>
+            <Route path="*" element={<NotFound/>}></Route>
           </Routes>
           {/* </BrowserRouter> */}          
         </div>
