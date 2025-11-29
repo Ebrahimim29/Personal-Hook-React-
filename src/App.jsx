@@ -1,20 +1,25 @@
 // import { useState } from "react";
 import Users from "./Users";
 import Posts from "./Posts";
-import { Link, NavLink, Route, Routes } from "react-router-dom";
+import { Link, Navigate, NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import AddUser from "./AddUser";
 import UserDetails from "./UserDetails";
 
 const App = () => {
   // const [page , setPage] = useState("users");
 
+  // const gotoPostsPage = true;
+
+  const navigate = useNavigate()
+
   const handleSomeAction = () => {
     //Do something.......
-    //redirecting
+    navigate("/users")
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 to-amber-500 p-6">
+    <div className="min-h-screen bg-linear-to-br from-blue-400 to-amber-500 p-6">
+      {/* {gotoPostsPage ? (<Navigate to={"posts"}/>) : null} */}
       <div className="max-w-4xl mx-auto bg-white/30 rounded shadow-md overflow-hidden">
         <header className="sticky top-0 left-0 right-0 bg-white shadow-md p-4">
           <div className="flex flex-col justify-center items-center gap-4">
@@ -27,8 +32,8 @@ const App = () => {
                 className={({ isActive }) =>
                   `p-2 rounded ${
                     isActive
-                      ? "bg-gradient-to-r from-blue-300 to-red-400 text-white"
-                      : "bg-gradient-to-l from-pink-300 to-yellow-400 text-gray-700 hover:bg-gray-200"
+                      ? "bg-linear-to-r from-blue-300 to-red-400 text-white"
+                      : "bg-linear-to-l from-pink-300 to-yellow-400 text-gray-700 hover:bg-gray-200"
                   }`
                 }
               >
